@@ -1,10 +1,27 @@
-def negarVazio(var,msg,msgErro):
-    while len(var) < 3:
-        print(msgErro)
-        var = input(msg) 
-    return
+def negarVazio(msg):
+    while True:
+        nome = input(msg)
+        if len(nome) >= 3:
+            return nome  # Retorna o nome válido e encerra a função
+        else:
+            print("Entrada inválida. Tente novamente.")
 
     
+def verificaTelefone(msg):  #telefone tinha que verificar se é um numero e verificar se entre 9 e 13 caracteres
+    num = input(msg)
+    while not num.isnumeric():
+        print("Erro!")
+        num = input(msg)
+        return int(num)
+    while True:
+        num = input(msg)
+        if len(num) <= 9:
+            return num  # Retorna o nome válido e encerra a função
+        else:
+            print("Entrada inválida. Tente novamente.")
+
+
+
 def forcaOpcao(msg,listaOpcao):
     opcoes = ', '.join(listaOpcao)
     escolha = input(f"{msg}\n{opcoes}\n->")
@@ -47,5 +64,7 @@ while inscrever != "s" and "n":
     print("Voce deve digitar s(sim) ou n(nao) ")
     inscrever = input("Voce deseja iniciar a incrição? (s/n): ") 
 if inscrever == "s":
-    jogadora = input("Digite seu nome completo: ")
-    negarVazio(jogadora,"Digite seu nome completo","Digite um nome com mais de 2 caracteres" )
+    jogadora = negarVazio("Digite seu nome completo: ")
+    jogadoras.append(jogadora)
+    telefone = verificaNumero("Digite seu numero para contato: ")
+    telefone = negarVazio("Digite seu numero para contato: ")
