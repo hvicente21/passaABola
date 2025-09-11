@@ -8,19 +8,15 @@ def negarVazio(msg):
 
     
 def verificaTelefone(msg):  #telefone tinha que verificar se é um numero e verificar se entre 9 e 13 caracteres
-    num = input(msg)
-    while not num.isnumeric():
-        print("Erro!")
-        num = input(msg)
-        return int(num)
     while True:
         num = input(msg)
-        if len(num) <= 9:
-            return num  # Retorna o nome válido e encerra a função
+        if num.isnumeric():
+            if len(num) >= 10 and len(num) <= 13:
+                return num  # Retorna o número válido e sai da função.
+            else:
+                print("Entrada inválida. O número deve ter entre 10 e 13 dígitos.")
         else:
-            print("Entrada inválida. Tente novamente.")
-
-
+            print("Entrada inválida. Por favor, digite apenas números.")
 
 def forcaOpcao(msg,listaOpcao):
     opcoes = ', '.join(listaOpcao)
@@ -39,8 +35,9 @@ def verificaNumero(msg):
 usuarios = []
 jogadoras = []
 telefones = []
-posiçoes = []
-emailJogadoras = ["goleira","zagueira","lateral-direita","lateral-esquerda","meio-campo","atacante"]
+emailJogadoras = []
+posicoes= ["goleira","zagueira","lateral-direita","lateral-esquerda","meio-campo","atacante"]
+posicaoJogadora = []
 idades = []
 times = []
 experiencias = []
@@ -66,5 +63,10 @@ while inscrever != "s" and "n":
 if inscrever == "s":
     jogadora = negarVazio("Digite seu nome completo: ")
     jogadoras.append(jogadora)
-    telefone = verificaNumero("Digite seu numero para contato: ")
-    telefone = negarVazio("Digite seu numero para contato: ")
+    telefone = verificaTelefone("Digite seu numero para contato: ")
+    telefones.append(telefone)
+    posicao = forcaOpcao("Digite em qual posicao voce joga: ", posicoes)
+    posicaoJogadora.append(posicao)
+
+
+
