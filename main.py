@@ -9,12 +9,12 @@ def negarVazio(msg):
 
 
 
-def verificaTelefone(msg):  # telefone tinha que verificar se é um numero e verificar se entre 9 e 13 caracteres
+def verificaTelefone(msg):  #função telefone verifica se é um numero e verificar se entre 9 e 13 caracteres
    while True:
        num = input(msg)
        if num.isnumeric():
            if len(num) >= 10 and len(num) <= 13:
-               return num  # Retorna o número válido e sai da função.
+               return num  
            else:
                print("Entrada inválida. O número deve ter entre 10 e 13 dígitos.")
        else:
@@ -23,7 +23,7 @@ def verificaTelefone(msg):  # telefone tinha que verificar se é um numero e ver
 
 
 
-def forcaOpcao(msg, listaOpcao):
+def forcaOpcao(msg, listaOpcao): #função força uma o usuario a escolher uma funçao que esta presente na lista
    opcoes = ', '.join(listaOpcao)
    escolha = input(f"{msg}\n{opcoes}\n->")
    while not escolha.title() in listaOpcao:
@@ -33,7 +33,7 @@ def forcaOpcao(msg, listaOpcao):
 
 
 
-def verificaNumero(msg):
+def verificaNumero(msg): #função que verifica se o usuario escolheu um numero
    num = input(msg)
    while not num.isnumeric():
        print("Erro!")
@@ -43,7 +43,7 @@ def verificaNumero(msg):
 
 
 
-def maiorIdade(msg):
+def maiorIdade(msg): #função que verifica se o usuario tem mais de 6 anos
    while True:
        idade = verificaNumero(msg)
        if idade > 2019:
@@ -53,7 +53,7 @@ def maiorIdade(msg):
        else:
            return idade
        
-def listarInscricoesLinha():
+def listarInscricoesLinha(): #função que lista as inscriçoes uma ao lado da outra
     if not jogadoras:
         print("Ainda não há jogadoras inscritas.")
         return
@@ -64,6 +64,8 @@ def listarInscricoesLinha():
             f"Nome: {jogadoras[i]} | Telefone: {telefones[i]} | Posição: {posicaoJogadora[i]} | Time: {times[i]} | E-mail: {emailJogadoras[i]} | Idade: {idades[i]} | Experiência: {experienciaJogadora[i]} | Observações: {observacoes[i]}")
 
 
+
+#listas para guardar informaçao das jogadoras
 usuarios = []
 jogadoras = []
 telefones = []
@@ -78,6 +80,7 @@ observacoes = []
 
 
 
+#loop que executa o programa até que o usuário escolha uma opção
 print("Olá seja Bem-Vindo(a) ao Passa a Bola")
 while True:
     print("\nMENU:")
@@ -96,8 +99,8 @@ while True:
                 inscrever = input("Voce deseja iniciar a incrição? (s/n): ")
             if inscrever == "s":
 
-                jogadora = negarVazio("Digite seu nome completo: ")
-                jogadoras.append(jogadora)
+                jogadora = negarVazio("Digite seu nome completo: ")     #chamando as funções de validação para obter os dados do usuário
+                jogadoras.append(jogadora)  #armazenando os dados do usuario as listas
 
 
                 telefone = verificaTelefone("Digite seu numero para contato: ")
@@ -127,17 +130,17 @@ while True:
                 observacoes.append(observacao)
 
         elif escolha == 2:
-            listarInscricoesLinha()
+            listarInscricoesLinha()     # chamando a função para exibir a lista de jogadoras inscritas
 
         elif escolha == 3:
-            print("Muito obrigada, ate breve!!!")
+            print("Muito obrigada, ate breve!!!")   #encerrando o loop e finalizando o programa
             break
             
         else: 
             print("Escolha invalida")
             
     except ValueError:
-        print("Entrada inválida. Por favor, digite um número.")
+        print("Entrada inválida. Por favor, digite um número.")     #lida com o erro caso o usuário digite algo que não seja um número
 
 
 
