@@ -140,7 +140,7 @@ while True:
             print("Escolha invalida")
             
     except ValueError:
-        print("Entrada inválida. Por favor, digite um número.")     #lida com o erro caso o usuário digite algo que não seja um número
+        print("Entrada inválida. Por favor, digite um número.")    #lida com o erro caso o usuário digite algo que não seja um número
 
 
 
